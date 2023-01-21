@@ -1,0 +1,32 @@
+{
+  "name": "api-teatralidade",
+  "version": "1.0.0",
+  "description": "Esse é um projeto de API para o site de Teatralidade que é um portal sobre o Universo do teatro, com conteúdos exclusivos, ferramentas de buscas por peças em cartaz e históricas, além de ser uma base de inteligência que liga atores, companhias e teatros.",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./api/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/waltherneto/api-teatralidade.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/waltherneto/api-teatralidade/issues"
+  },
+  "homepage": "https://github.com/waltherneto/api-teatralidade#readme",
+  "dependencies": {
+    "body-parser": "^1.20.1",
+    "express": "^4.18.2",
+    "mysql2": "^3.0.1",
+    "path": "^0.12.7",
+    "sequelize": "^5.21.7",
+    "sequelize-cli": "^5.5.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
