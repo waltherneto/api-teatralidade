@@ -70,7 +70,78 @@ class ActorController {
           id: Number(actorID)
         }
        });
-      return res.status(200).json({ mensagem: `Ator com o ID #${actorID} foi removido!` });
+      return res.status(200).json({ mensagem: `O ator com o ID #${actorID} foi removido com sucesso!` });
+    } catch (err) {
+      return res.status(500).json(err.message);
+    }
+  }
+
+  static async gettOneMedia (req, res) {
+    const { actorID, mediaID } = req.params;
+
+    try {
+      const oneMedia = await database.ActorMedias.findOne({
+        where: {
+          id: Number(mediaID),
+          actor_id: Number(actorID)
+        }
+      })
+
+      return res.status(200).json(oneMedia);
+    } catch (err) {
+      return res.status(500).json(err.message);
+    }
+  }
+
+  static async createActorMedia (req, res) {
+    const { actorID } = req.params;
+    const newActorMedia = { ...req.body, actor_id: Number(actorID) };
+
+    try {
+      const newCreatedActorMedia = await database.ActorMedias.create(newActorMedia)
+
+      return res.status(200).json(newCreatedActorMedia);
+    } catch (err) {
+      return res.status(500).json(err.message);
+    }
+  }
+
+  static async updateActorMedia (req, res) {
+    const { actorID, mediaID } = req.params;
+    const newInfo = req.body;
+
+    try {
+      await database.ActorMedias.update(newInfo, { 
+        where: { 
+          id: Number(mediaID),
+          actor_id: Number(actorID)
+        }
+       });
+
+       const updatedActorMedia = await database.ActorMedias.findOne({
+        where: {
+          id: Number(mediaID),
+          actor_id: Number(actorID)
+        }
+      });
+
+      return res.status(200).json(updatedActorMedia);
+    } catch (err) {
+      return res.status(500).json(err.message);
+    }
+  }
+
+  static async removeActorMedia (req, res) {
+    const { actorID, mediaID } = req.params;
+
+    try {
+      await database.Actors.destroy({ 
+        where: {
+          id: Number(mediaID),
+          actor_id: Number(actorID)
+        }
+       });
+      return res.status(200).json({ mensagem: `O item de mídia com ID #${mediaID} do ator #${actorID} foi removido com sucesso!` });
     } catch (err) {
       return res.status(500).json(err.message);
     }

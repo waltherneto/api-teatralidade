@@ -9,4 +9,8 @@ router.post('/actors', ActorController.createActor)
 router.put('/actors/:actorID', ActorController.updateActor)
 router.delete('/actors/:actorID', ActorController.removeActor)
 
+router.get('/actors/:actorID/media/:mediaID', ActorController.gettOneMedia)
+router.post('/actors/:actorID/media', ActorController.createActorMedia)
+router.put('/actors/:actorID/media/:mediaID', ActorController.updateActorMedia)
+
 module.exports = router;
