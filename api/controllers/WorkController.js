@@ -76,6 +76,21 @@ class WorkController {
     }
   }
 
+  static async restoreWork (req, res) {
+    const { workID } = req.params;
+
+    try {
+      await database.Work.restore({ 
+        where: {
+          id: Number(workID)
+        }
+       });
+      return res.status(200).json({ mensagem: `A companhia com o ID #${workID} foi restaurada com sucesso!` });
+    } catch (err) {
+      return res.status(500).json(err.message);
+    }
+  }
+
 }
 
 module.exports = WorkController;

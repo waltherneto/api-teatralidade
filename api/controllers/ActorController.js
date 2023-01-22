@@ -76,6 +76,21 @@ class ActorController {
     }
   }
 
+  static async restoreActor (req, res) {
+    const { actorID } = req.params;
+
+    try {
+      await database.Actors.restore({ 
+        where: {
+          id: Number(actorID)
+        }
+       });
+      return res.status(200).json({ mensagem: `O ator com o ID #${actorID} foi restaurado com sucesso!` });
+    } catch (err) {
+      return res.status(500).json(err.message);
+    }
+  }
+
   static async gettOneMedia (req, res) {
     const { actorID, mediaID } = req.params;
 

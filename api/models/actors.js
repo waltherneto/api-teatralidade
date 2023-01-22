@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
     city_birth: DataTypes.STRING,
     state_birth: DataTypes.STRING,
     mini_bio: DataTypes.TEXT
-  }, {});
+  }, { paranoid: true });
   Actors.associate = function(models) {
     // Associações são definidas aqui
     Actors.hasMany(models.ActorMedias, {

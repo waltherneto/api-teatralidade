@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
     company_id: DataTypes.INTEGER,
     date_start: DataTypes.DATEONLY,
     date_finish: DataTypes.DATEONLY
-  }, {});
+  }, { paranoid: true });
   InterfaceActorCompanyWorks.associate = function(models) {
     // Associações são definidas aqui
     InterfaceActorCompanyWorks.belongsTo(models.Works, {

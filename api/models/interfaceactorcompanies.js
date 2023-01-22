@@ -2,7 +2,7 @@
 module.exports = (sequelize, DataTypes) => {
   const InterfaceActorCompanies = sequelize.define('InterfaceActorCompanies', {
     status: DataTypes.STRING
-  }, {});
+  }, { paranoid: true });
   InterfaceActorCompanies.associate = function(models) {
     // Associações são definidas aqui
     InterfaceActorCompanies.belongsTo(models.Actors, {

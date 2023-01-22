@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
     state: DataTypes.STRING,
     history: DataTypes.TEXT,
     date_foundation: DataTypes.DATEONLY
-  }, {});
+  }, { paranoid: true });
   Companies.associate = function(models) {
     // Associações são definidas aqui
     Companies.hasMany(models.InterfaceActorCompanies, {

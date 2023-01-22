@@ -76,6 +76,21 @@ class CompanyController {
     }
   }
 
+  static async restoreCompany (req, res) {
+    const { companyID } = req.params;
+
+    try {
+      await database.Company.restore({ 
+        where: {
+          id: Number(companyID)
+        }
+       });
+      return res.status(200).json({ mensagem: `A companhia com o ID #${companyID} foi restaurada com sucesso!` });
+    } catch (err) {
+      return res.status(500).json(err.message);
+    }
+  }
+
 }
 
 module.exports = CompanyController;
